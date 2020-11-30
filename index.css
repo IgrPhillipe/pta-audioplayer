@@ -1,0 +1,85 @@
+:root {
+    --green: #51E678;
+    --purple: #6800E4;
+    --white: #eee;
+    --lighter-gray: #aaa;
+    --gray: #555;
+    --darker-gray: #343332;
+    --black: #222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto';
+}
+
+.git-button {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20rem;
+    height: 30rem;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    background: var(--darker-gray);
+}
+
+.cover img {
+    width: 100%;
+}
+
+.progress-bar {
+    height: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.details h2 {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.details p {
+    color: var(--lighter-gray);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.controls button {
+    margin: 0 0.5rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+.controls img {
+    width: 1rem;
+}
