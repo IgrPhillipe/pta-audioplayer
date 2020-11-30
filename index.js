@@ -1,16 +1,24 @@
-const cover = document.querySelector(".player .main .cover");
-const title = document.querySelector(".details h2");
-const artist = document.querySelector(".details p");
-const audio = document.querySelector("audio");
+const player = {
+    cover: document.querySelector(".main .cover"),
+    title: document.querySelector(".details h2"),
+    artist: document.querySelector(".details p"),
+    audio: document.querySelector("audio"),
 
-const data = {
-    title: "American Girl",
-    artists: "Ta-Ku, Wafia",
-    file: "./audio/American-Girl.mp3",
-    cover: "./audio/American-Girl.jpg"
+    data: {
+        title: "American Girl",
+        artists: "Ta-Ku, Wafia",
+        file: "./audio/American-Girl.mp3",
+        cover: "./audio/American-Girl.jpg"
+    },
+
+    start() {
+        this.cover.style.background = `url("${this.data.cover}") no-repeat center / cover`
+        this.title.innerText = this.data.title;
+        this.artist.innerText = this.data.artists;
+        this.audio.src = this.data.file;
+    }
+
+
 };
 
-cover.style.background = `url("${data.cover}") no-repeat center / cover`
-title.innerText = data.title;
-artist.innerText = data.artists;
-audio.src = data.file;
+player.start();
