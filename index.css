@@ -40,8 +40,9 @@ body {
     background: var(--darker-gray);
 }
 
-.cover img {
-    width: 100%;
+.cover {
+    width: 20rem;
+    height: 20rem;
 }
 
 .progress-bar {
