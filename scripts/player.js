@@ -4,6 +4,9 @@ window.player = {
     ball: document.querySelector(".ball"),
     time: document.querySelector(".time"),
 
+    playButton: document.querySelector(".play"),
+    pauseButton: document.querySelector(".pause"),
+
     cover: document.querySelector(".main .cover"),
     title: document.querySelector(".details h2"),
     artist: document.querySelector(".details p"),
@@ -16,6 +19,8 @@ window.player = {
         this.update();
         this.audio.onended = () => this.next();
         this.chose();
+        this.play();
+        this.pause();
     },
     next() {
         this.currentPlaying++;
@@ -59,6 +64,20 @@ window.player = {
             this.audio.currentTime = (progress * this.audio.duration) / 100;
         })
     },
+    play() {
+        this.playButton.addEventListener('click', () => {
+            this.audio.play();
+            this.playButton.style.display = 'none';
+            this.pauseButton.style.display = 'inline-block';
+        })
+    },
+    pause() {
+        this.pauseButton.addEventListener('click', () => {
+            this.audio.pause();
+            this.pauseButton.style.display = 'none';
+            this.playButton.style.display = 'inline-block';
+        })
+    }
 
 
 
