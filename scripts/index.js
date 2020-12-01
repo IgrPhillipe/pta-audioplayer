@@ -1,4 +1,4 @@
-const path = function(file) {
+const path = function (file) {
     return `audio/${file}`;
 };
 
