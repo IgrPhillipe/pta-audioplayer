@@ -75,6 +75,8 @@ body {
 .controls {
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    align-items: center;
     margin: 1rem 0;
 }
 
@@ -86,6 +88,9 @@ body {
     cursor: pointer;
 }
 
+.controls .pause {
+    display: none;
+}
 
 .controls img {
     width: 1rem;
