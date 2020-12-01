@@ -18,19 +18,24 @@
         <div class="main">
             <div class="cover">
             </div>
+
             <div class="progress-bar">
-                <div class="current-duration">00:00</div>
-                <div id="seekbar">
-                    <input type="range" min=0 max=100 id="seekbar" step="1">
+                <div class="bar"></div>
+                <div class="content">
+                    <div class="bar-current"></div>
+                    <div class="ball"></div>
                 </div>
-                <div class="total-duration">00:00</div>
             </div>
+
+            <div class="time"></div>
+
             <div class="details">
                 <h2></h2>
                 <p class="artist"></p>
             </div>
+            <audio controls ></audio>
             <div class="controls">
-                <audio controls ></audio>
+
                 <button class="previous">
                     <img src="./icons/previous.svg" alt="">
                 </button>
