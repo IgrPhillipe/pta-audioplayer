@@ -1,4 +1,9 @@
 window.player = {
+    bar: document.querySelector(".progress-bar"),
+    barCurrent: document.querySelector(".bar-current"),
+    ball: document.querySelector(".ball"),
+    time: document.querySelector(".time"),
+
     cover: document.querySelector(".main .cover"),
     title: document.querySelector(".details h2"),
     artist: document.querySelector(".details p"),
@@ -10,6 +15,7 @@ window.player = {
     start() {
         this.update();
         this.audio.onended = () => this.next();
+        this.chose();
     },
     next() {
         this.currentPlaying++;
@@ -20,6 +26,7 @@ window.player = {
         this.audio.play();
     },
     update() {
+        this.current();
         this.currentAudio = this.audioData[this.currentPlaying];
         this.cover.style.background = `url('${(path(this.currentAudio.cover))}') no-repeat center / cover`;
         this.title.innerText = this.currentAudio.title;
@@ -30,5 +37,30 @@ window.player = {
         this.currentPlaying = 0;
         this.update();
         this.audio.stop();
-    }
+    },
+
+    current() {
+        this.audio.addEventListener('timeupdate', () => {
+            const {
+                currentTime,
+                duration
+            } = this.audio;
+            this.barCurrent.style.width = `${(currentTime / duration) * 100}%`
+            this.ball.style.marginLeft = `${(currentTime / duration) * 100}%`
+            this.time.innerHTML = `${Math.floor(currentTime/60)}:${Math.floor(currentTime%60)} / ${Math.floor(duration  /60)}:${Math.floor(duration%60)}`;
+        })
+    },
+    chose() {
+        this.bar.addEventListener('click', () => {
+            const bar = this.bar.getBoundingClientRect();
+            const x = event.clientX;
+            const progress = Math.round(((x - bar.left) / (bar.right - bar.left)) * 100);
+            console.log(progress);
+            this.audio.currentTime = (progress * this.audio.duration) / 100;
+        })
+    },
+
+
+
+
 };

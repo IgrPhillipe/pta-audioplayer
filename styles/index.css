@@ -47,6 +47,15 @@ body {
     height: 20rem;
 }
 
+.time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+    font-size: 0.7rem;
+    color: var(--green);
+}
+
 .details {
     display: flex;
     flex-direction: column;
