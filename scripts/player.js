@@ -13,6 +13,9 @@ window.player = {
     },
     next() {
         this.currentPlaying++;
+        if (this.currentPlaying == this.audioData.length) {
+            this.restart();
+        }
         this.update();
         this.audio.play();
     },
@@ -22,5 +25,10 @@ window.player = {
         this.title.innerText = this.currentAudio.title;
         this.artist.innerText = this.currentAudio.artists;
         this.audio.src = path(this.currentAudio.file);
+    },
+    restart() {
+        this.currentPlaying = 0;
+        this.update();
+        this.audio.stop();
     }
 };
