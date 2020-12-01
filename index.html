@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/progress-bar.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>AudioPlayer</title>
@@ -18,6 +19,11 @@
             <div class="cover">
             </div>
             <div class="progress-bar">
+                <div class="current-duration">00:00</div>
+                <div id="seekbar">
+                    <input type="range" min=0 max=100 id="seekbar" step="1">
+                </div>
+                <div class="total-duration">00:00</div>
             </div>
             <div class="details">
                 <h2></h2>
@@ -25,7 +31,7 @@
             </div>
             <div class="controls">
                 <audio controls ></audio>
-                <!-- <button class="previous">
+                <button class="previous">
                     <img src="./icons/previous.svg" alt="">
                 </button>
                 <button class="pause">
@@ -36,7 +42,7 @@
                 </button>
                 <button class="next">
                     <img src="./icons/next.svg" alt="">
-                </button> -->
+                </button>
             </div>
         </div>
         <script src="./scripts/data.js"></script>
