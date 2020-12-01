@@ -21,7 +21,7 @@ body {
 
 .git-button {
     position: absolute;
-    top: 2rem;
+    top: 5rem;
     left: 50%;
     transform: translateX(-50%);
 }

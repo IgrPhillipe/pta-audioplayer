@@ -6,6 +6,10 @@ window.player = {
 
     playButton: document.querySelector(".play"),
     pauseButton: document.querySelector(".pause"),
+    nextButton: document.querySelector(".next"),
+    previousButton: document.querySelector(".previous"),
+    forwardButton: document.querySelector(".forward"),
+    rewindButton: document.querySelector(".rewind"),
 
     cover: document.querySelector(".main .cover"),
     title: document.querySelector(".details h2"),
@@ -13,16 +17,21 @@ window.player = {
     audio: document.querySelector("audio"),
     audioData: audios,
     currentAudio: {},
-    currentPlaying:0,
+    currentPlaying: 0,
 
     start() {
         this.update();
-        this.audio.onended = () => this.next();
+        this.audio.onended = () => this.end();
         this.chose();
         this.play();
         this.pause();
+        this.next();
+        this.previous();
+        this.forward();
+        this.rewind();
     },
-    next() {
+
+    end() {
         this.currentPlaying++;
         if (this.currentPlaying == this.audioData.length) {
             this.restart();
@@ -30,6 +39,7 @@ window.player = {
         this.update();
         this.audio.play();
     },
+
     update() {
         this.current();
         this.currentAudio = this.audioData[this.currentPlaying];
@@ -38,6 +48,7 @@ window.player = {
         this.artist.innerText = this.currentAudio.artists;
         this.audio.src = path(this.currentAudio.file);
     },
+
     restart() {
         this.currentPlaying = 0;
         this.update();
@@ -52,9 +63,10 @@ window.player = {
             } = this.audio;
             this.barCurrent.style.width = `${(currentTime / duration) * 100}%`
             this.ball.style.marginLeft = `${(currentTime / duration) * 100}%`
-            this.time.innerHTML = `${Math.floor(currentTime/60)}:${Math.floor(currentTime%60)} / ${Math.floor(duration  /60)}:${Math.floor(duration%60)}`;
+            this.time.innerHTML = `${Math.floor(currentTime / 60)}:${Math.floor(currentTime % 60)} / ${Math.floor(duration / 60)}:${Math.floor(duration % 60)}`;
         })
     },
+
     chose() {
         this.bar.addEventListener('click', () => {
             const bar = this.bar.getBoundingClientRect();
@@ -64,6 +76,7 @@ window.player = {
             this.audio.currentTime = (progress * this.audio.duration) / 100;
         })
     },
+
     play() {
         this.playButton.addEventListener('click', () => {
             this.audio.play();
@@ -71,15 +84,41 @@ window.player = {
             this.pauseButton.style.display = 'inline-block';
         })
     },
+
     pause() {
         this.pauseButton.addEventListener('click', () => {
             this.audio.pause();
             this.pauseButton.style.display = 'none';
             this.playButton.style.display = 'inline-block';
         })
+    },
+
+    next() {
+        this.nextButton.addEventListener('click', () => {
+            this.end()
+        })
+    },
+
+    previous() {
+        this.previousButton.addEventListener('click', () => {
+            this.currentPlaying--;
+            if (this.currentPlaying < 0) {
+                this.restart();
+            }
+            this.update();
+            this.audio.play();
+        })
+    },
+
+    forward() {
+        this.forwardButton.addEventListener('click', () => {
+            this.audio.currentTime += 10;
+        })
+    },
+
+    rewind() {
+        this.rewindButton.addEventListener('click', () => {
+            this.audio.currentTime -= 10;
+        })
     }
-
-
-
-
 };
