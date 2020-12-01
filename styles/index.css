@@ -16,6 +16,7 @@
 
 body {
     font-family: 'Roboto';
+    background-color: #fdfdfd;
 }
 
 .git-button {
@@ -32,6 +33,7 @@ body {
     transform: translate(-50%, -50%);
     width: 20rem;
     height: 30rem;
+    box-shadow: 0px 2px 8px rgba(54, 57, 63, 0.4);
 }
 
 .main {
